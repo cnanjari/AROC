@@ -1,0 +1,66 @@
+
+
+        
+
+
+        <div class="sidebar-wrapper">
+	        <div class="logo" >
+	            <div class="logo-img">
+	                <img src="/assets/img/A.png"/>
+	            </div>
+	            
+	        </div>
+			<div class="user">
+                <div class="photo">
+                    <img src="../assets/img/faces/avatar.jpg" />
+                </div>
+                <div class="info" style="padding-left: 70px;">
+                   <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                        <span>
+                            Usuario
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <div class="collapse" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a  [routerLink]="['']">
+                                    <span class="sidebar-normal">Salir</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-container">
+                <ul class="nav" >
+                    <li routerLinkActive="active">
+                        <a  [routerLink]="['/dashboard']">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a  [routerLink]="['/solicitudes-activas']">
+                            <i class="fa fa-spinner" aria-hidden="true"></i>
+                            <p>Solicitudes activas</p>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a  [routerLink]="['/solicitudes-terminadas']">
+                             <i class="fa fa-check-square" aria-hidden="true"></i>
+                            <p>Solicitudes Terminadas</p>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a  [routerLink]="['/trazabilidad']">
+                            <i class="material-icons">subject</i>
+                            <p>Logs y auditoria</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>

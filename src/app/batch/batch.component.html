@@ -1,0 +1,95 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="header text-center">
+            <h3 class="title">Generacion Documento Batch</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                
+				  
+						<div class="card">
+						    <div class="card-header card-header-icon" data-background-color="blue">
+						        <i class="fa fa-archive" aria-hidden="true"></i>
+						    </div>
+						    <div class="card-content">
+						        <h4 class="card-title">Proceso a buscar -
+						            <small class="category">Seleccione un proceso a Crear</small>
+						        </h4>
+						        <div class="row">
+						            <div class="col-md-12">
+						                <form class="navbar-form " role="search">
+						                    <div class="form-group form-search is-empty">
+						                        <input type="text" class="form-control" placeholder="Buscar">
+						                        <span class="material-input"></span>
+						                    </div>
+						                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+						                        <i class="material-icons">search</i>
+						                        <div class="ripple-container"></div>
+						                    </button>
+						                </form>
+						            </div>
+						        </div>
+						        
+						        
+						        <form>
+						            <div class="row">
+						                <div class="col-sm-12 col-md-6">
+						                    <div class="form-group label-floating">
+						                        <label class="control-label">Grupo</label>
+						                        <select class="form-control" name="cars" multiple>
+												  <option value="volvo">Finanzas</option>
+												  <option value="saab">Marketing</option>
+												  <option value="opel">Impuestos</option>
+												</select>
+						                    </div>
+						                </div>
+						                <div class="col-sm-12 col-md-6">
+						                    <div class="form-group label-floating">
+						                        <label class="control-label">Subgrupo</label>
+						                        <select class="form-control" name="cars" multiple>
+												  <option value="volvo">Informes</option>
+												  <option value="saab">Mandatos</option>
+												  <option value="opel">Cartola</option>
+												  <option value="audi">Permisos</option>
+												</select>
+						                    </div>
+						                </div>
+						            </div>
+						            <div class="row">
+						                
+						                <div class="col-md-12">
+							                <div class="card">
+							                    <div class="card-header card-header-text" data-background-color="orange">
+							                        <h4 class="card-title">Resultado de Procesos</h4>
+							                    </div>
+							                    <div class="card-content table-responsive">
+							                        <table class="table table-hover">
+							                                <thead class="text-warning">
+							                                    <tr>
+							                                      <th *ngFor="let cell of tableData.headerRow">{{ cell }}</th>
+							                                    </tr>
+							                                </thead>
+							                              <tbody>
+							                                  <tr *ngFor="let row of tableData.dataRows">
+							                                      <td *ngFor="let cell of row">{{cell}}</td>
+							                                  </tr>
+							                              </tbody>
+							                        </table>
+							                    </div>
+							                </div>
+							            </div>
+						            </div>
+						            
+						            <button type="submit" [routerLink]="['/pages/batch2']" class="btn btn-info pull-right">Siguiente</button>
+						            <div class="clearfix"></div>
+						        </form>
+						    </div>
+						</div>
+
+
+
+				  </div>
+				  
+            </div>
+        </div>
+    </div>

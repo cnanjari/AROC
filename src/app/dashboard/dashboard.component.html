@@ -1,0 +1,289 @@
+<div class="main-content">
+    <div class="container-fluid" >
+        <div class="row" >
+    
+        <!-- <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs" data-background-color="teal">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Batch:</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active">
+                                        <a href="#profile" data-toggle="tab">
+                                            <i class="material-icons">hourglass_full</i>Procesos Activos
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#messages" data-toggle="tab">
+                                            <i class="material-icons">done</i>Procesos Terminados
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                            	 <div class="table-responsive">
+                                <table class="table">
+                                <thead class="text-info"  >
+                                	<tr  [ngStyle]="{'text-align':'center'}">
+										  <th [ngStyle]="{'text-align':'center'}">ID</th>
+										  <th [ngStyle]="{'text-align':'center'}">Inicio</th> 
+										  <th [ngStyle]="{'text-align':'center'}">Tiempo estimado</th>
+										  <th [ngStyle]="{'text-align':'center'}">Documentos generados</th>
+										  <th [ngStyle]="{'text-align':'center'}">Porcentaje de avance</th>
+										</tr>
+                                </thead>
+                                      <tbody>
+										
+									    <tr *ngFor="let row of tasks1" [ngStyle]="{'text-align':'center'}">
+									        <td>{{row.id}}</td>
+									        <td>{{row.fecha_inicio}}</td>
+									        <td>{{row.feha_fin}}</td>
+									        <td >{{row.cantidad_doc | number}}</td>
+									        <td >
+											{{row.porcentaje}}%
+											<div class="progress progress-line-info">
+			                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':row.porcentaje+'%'}">
+			                                        <span class="sr-only">{{row.porcentaje}}% Completado</span>
+			                                    </div>
+			                                </div>
+			                                </td>
+									     </tr>
+                                      </tbody>
+                                </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="messages">
+                             <div class="table-responsive">
+                                <table class="table">
+                                	<thead class="text-info">
+                                		<tr>
+											  <th [ngStyle]="{'text-align':'center'}">ID</th>
+											  <th [ngStyle]="{'text-align':'center'}">Inicio</th> 
+											  <th [ngStyle]="{'text-align':'center'}">Fin</th>
+											  <th [ngStyle]="{'text-align':'center'}">Cantidad Documentos</th>
+											  <th [ngStyle]="{'text-align':'center'}">Estado</th>
+											  <th [ngStyle]="{'text-align':'center'}">Porcentaje</th>
+										  </tr>
+                                	</thead>
+                                      <tbody>
+                                      	  
+                                          <tr *ngFor="let row of tasks2" [ngStyle]="{'text-align':'center'}">
+                                              <td>{{row.id}}</td>
+                                              <td>{{row.fecha_inicio}}</td>
+                                              <td>{{row.feha_fin}}</td>
+                                              <td>{{row.cantidad_doc}}</td>
+                                              <td *ngIf="row.estado == 2">Completado</td>
+                                              <td *ngIf="row.estado == 3" class="warning">Completado on errores</td>
+                                              <td >
+												{{row.porcentaje}}%
+												<div class="progress progress-line-info">
+				                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':row.porcentaje+'%'}">
+				                                        <span class="sr-only">{{row.porcentaje}}% Completado</span>
+				                                    </div>
+				                                </div>
+				                               </td>
+                                           </tr>
+                                      </tbody>
+                                </table>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        	<div class="col-lg-12 col-md-12 col-sm-12"  >
+        		<div class="card">
+                    
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label class="label-control">Seleccione opci&oacute;n de tiempo para la visualizaci&oacute;n de datos</label>
+                            
+                           
+                           <div class="dropdown">
+                                <button href="#pablo" class="dropdown-toggle btn btn-info btn-round btn-block" data-toggle="dropdown">Cambie el periodo
+                                    <b class="caret"></b>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-left">
+                                    <li class="dropdown-header">Seleccione tiempo</li>
+                                    <li>
+                                        <a (click)="onSelectDate(24)" >Ultimas 24 horas</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="onSelectDate(36)">Ultimas 36 horas</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="onSelectDate(48);">Ultimas 48 horas</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="onSelectDate(72)" >Ultimas 72 horas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+        	</div>
+        	
+        	<div class="col-12"  *ngIf="procesos > 0; else exist">
+        	<h3>No Existen datos para el tiempo seleccionado</h3>
+        	</div>
+        	
+        </div>
+
+        
+
+
+      
+        
+
+
+    </div>
+
+<ng-template #charge>
+     <div class="loader" >
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+</ng-template>
+<ng-template #chargecard>
+		<div class="card card-stats">
+			<div class="card-content">
+				<div class="loader" [ngStyle]="{'position': 'relative' }">
+					<svg class="circular" viewBox="25 25 50 50">
+						<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+   </ng-template>
+<ng-template #exist>
+		<div class="row">
+	            <div class="col-lg-4 col-md-6 col-sm-6 ">
+	                <div class="card card-stats"  *ngIf="this.procesos.proc!==undefined else chargecard">
+	                    <div class="card-header" [attr.data-background-color]="color1" >
+	                        <i class="material-icons">watch_later</i>
+	                    </div>
+	                    <div class="card-content">
+	                        <p class="category">{{indicadores1[0].titulo}}</p>
+	                        <h3 class="card-title">{{indicadores1[0].cantidad | number}} </h3>
+	                    </div>
+	                    <div class="card-footer">
+	                        <div class="stats">
+	                            <i class="material-icons">info</i>
+	                            {{indicadores1[0].label}}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 col-sm-6">
+	                <div class="card card-stats" *ngIf="this.procesos.proc!==undefined else chargecard" >
+	                    <div class="card-header" [attr.data-background-color]="color2">
+	                        <i class="material-icons">pie_chart</i>
+	                    </div>
+	                    <div class="card-content">
+	                        <p class="category">Batch {{indicadores1[1].titulo}}</p>
+	                        <h3 class="card-title">{{indicadores1[1].cantidad | number}}</h3>
+	                    </div>
+	                    <div class="card-footer">
+	                        <div class="stats">
+	                            <i class="material-icons">done_all</i> {{indicadores1[1].label}}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 col-sm-6">
+	                <div class="card card-stats" *ngIf="this.procesos.proc!==undefined else chargecard">
+	                    <div class="card-header" [attr.data-background-color]="color3">
+	                        <i class="material-icons">bug_report</i>
+	                    </div>
+	                    <div class="card-content">
+	                        <p class="category">{{indicadores1[2].titulo}}</p>
+	                        <h3 class="card-title">{{indicadores1[2].cantidad | number}}</h3>
+	                    </div>
+	                    <div class="card-footer">
+	                        <div class="stats">
+	                            <i class="material-icons">info</i>{{indicadores1[2].label}}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+	                <div class="card card-chart">
+	                    <div class="card-header" data-background-color="orange" data-header-animation="true">
+	                        <div class="ct-chart" id="dailySalesChart"></div>
+	                    </div>
+	                    <div class="card-content">
+	                        <div class="card-actions">
+	                            
+	                            <button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">
+	                                <i class="material-icons">refresh</i>
+	                            </button>
+	                            
+	                        </div>
+	                        <h4 class="card-title">Semana</h4>
+	                        <p class="category">
+	                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 2.545.866  </span> Documentos Terminados</p>
+	                    </div>
+	                    <div class="card-footer">
+	                        <div class="stats">
+	                            <i class="material-icons">access_time</i> actualizado 4 minutos atras
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+	                <div class="card card-chart" >
+	                    <div class="card-header" data-background-color="green" data-header-animation="true">
+	                        <div class="ct-chart" id="donutChart"></div>
+	                    </div>
+	                    <div class="card-content">
+	                        <div class="card-actions">
+	                          
+	                            <button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">
+	                                <i class="material-icons">refresh</i>
+	                            </button>
+	                            
+	                        </div>
+	                        <h4 class="card-title">Procesos Completados</h4>
+	                        <p class="category">La ultima Semana</p>
+	                        
+	                    </div>
+	                   <div class="card-footer">
+	                        <i class="fa fa-circle text-info"></i> Correcto
+	                        <i class="fa fa-circle text-danger"></i> Incidencia
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-12">
+                <div class="card card-chart">
+                    <div class="card-header" data-background-color="yellow" data-header-animation="true">
+                        <div class="ct-chart" id="completedTasksChart"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-actions">
+                            
+                            <button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">
+                                <i class="material-icons">refresh</i>
+                            </button>
+                            
+                        </div>
+                        <h4 class="card-title">Estado de Generacion Batch ID:<span class="text-info">{{ultimoproceso}}</span></h4>
+                        <p class="category">cantidades de carga</p>
+                    </div>
+                   
+                </div>
+            </div>
+           </div>
+</ng-template>
+</div>

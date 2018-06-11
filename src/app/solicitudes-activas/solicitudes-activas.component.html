@@ -1,0 +1,98 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="header text-center">
+            <h3 class="title">Solicitudes Activas</h3>
+        </div>
+        <div class="row">
+        	 
+            <div class="col-md-12">
+                
+				  		
+						<div class="card" *ngIf="procesos.proc else charge">
+						    <div class="card-header card-header-icon" data-background-color="blue">
+						        <i class="fa fa-archive" aria-hidden="true"></i>
+						    </div>
+						    <div class="card-content" *ngIf="procesos.existenproc else unexist">
+						        <h4 class="card-title"> Solicitudes Activas
+						        </h4>
+						        <div class="table-responsive" >
+						        <table class="table table-striped">
+                                      <tbody>
+                                      	<tr>
+									    	<th><input type="text" id="inputEmail" class="form-control" placeholder="Buscar Id, tipo documento" [(ngModel)]="idProceso"></th>
+									  	</tr>
+										<tr >
+										  <th></th>
+										  <th [ngStyle]="{'text-align':'center'}">Inicio</th>
+										  <th [ngStyle]="{'text-align':'center'}">estado</th> 
+										  <th [ngStyle]="{'text-align':'center'}">Duracion estimada</th>
+										  <th [ngStyle]="{'text-align':'center'}">Procentaje de avance</th>
+										  
+										</tr>
+							
+									    <tr *ngFor="let row of procesos.proc | customerEmailFilter:idProceso" [ngStyle]="{'text-align':'center'}" >
+									        <ng-container *ngIf="row.idEstado != null">
+									        <td >{{row.processId}}
+					                        </td>
+									        <td>{{row.inicio}}</td>
+									        <td>{{row.idEstado}}</td>
+									        <td>{{row.tiempoEstimado}}</td>
+									        
+									        <td *ngIf="row.completado; else error">
+									        
+									        	{{row.completado}}%
+                  								<div class="progress progress-line-info">
+							                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin='0' aria-valuemax='100' [ngStyle]="{'width':row.completado+'%'}">
+							                     <span class='sr-only'>{{row.completado}}% Completado</span>"+
+							                   </div>
+							                   <div class="progress-bar progress-bar-danger" [ngStyle]="{'width': row.porNOK+'%' }">
+					                                <span class="sr-only">10% Complete (danger)</span>
+					                            </div>
+							                  </div>
+							                
+							                </td>
+                                           	<ng-template #error>
+	                                           	<td>
+	                                           	0%
+												<div class="progress progress-line-info">
+								                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin='0' aria-valuemax='100' [ngStyle]="{'width':'0%'}">
+								                     <span class='sr-only'>0% Completado</span>"+
+								                   </div>
+								                   <div class="progress-bar progress-bar-warning" [ngStyle]="{'width': '100%' }">
+						                                <span class="sr-only">0% Complete (danger)</span>
+						                            </div>
+								                  </div>
+								                  </td>
+											</ng-template>
+                                           </ng-container>
+									     </tr>
+                                      </tbody>
+                                </table>
+						        
+						        </div>
+							</div>
+							
+						</div>
+						<ng-template #charge>
+							<div class="loader">
+								<svg class="circular" viewBox="25 25 50 50">
+									<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+								</svg>
+							</div>
+					   </ng-template>
+					   <ng-template #unexist>
+							<h4 class="card-title">No existen procesos en ejecución en este momento.</h4>
+							<div class="row">
+								<div class="col-12" [ngStyle]="{'text-align':'center'}">
+
+										<i class="material-icons text-warning"[ngStyle]="{'font-size': '48px' }" >highlight_off</i>
+								</div>
+							</div>
+							
+				   		</ng-template>
+
+				  </div>
+				  
+            </div>
+        </div>
+    </div>

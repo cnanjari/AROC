@@ -1,0 +1,39 @@
+<nav class="navbar navbar-transparent navbar-absolute">
+    <div class="container-fluid">
+        <div class="navbar-minimize">
+            <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                <i class="material-icons visible-on-sidebar-mini">view_list</i>
+            </button>
+        </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" (click)="sidebarToggle()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <div *ngIf="isMobileMenu()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a [routerLink]="['/pages/login']" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons">exit_to_app</i>
+                            <p class="hidden-lg hidden-md">Log Out</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.altiuz.com" target="_blank">
+                            <img [ngStyle]="{'max-width':'5em'}"  src="../assets/img/logo_altiuz_actual_black.png"/> 
+                        </a>
+                    </li> 
+                    
+                    
+                    <li class="separator hidden-lg hidden-md"></li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</nav>

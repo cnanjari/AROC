@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="header text-center">
+            <h3 class="title">Logs y Auditoria</h3>
+        </div>
+        <div class="row">
+        
+            <div class="col-md-12">
+                
+				  
+						<div class="card">
+						    <div class="card-header card-header-icon" data-background-color="red">
+						        <i class="fa fa-archive" aria-hidden="true"></i>
+						    </div>
+						    <div class="card-content">
+						        <h4 class="card-title">Seleccione Solicitudes Terminadas para trazar sus Logs 						           
+						        </h4>
+						        <div class="table-responsive">
+						        <table class="table">
+                                      <tbody>
+                                      	<tr>
+									    	<th><input type="text" id="inputEmail" class="form-control" placeholder="Buscar Id, tipo documento" [(ngModel)]="id"></th>
+									  	</tr>
+										<tr style="">
+										  <th></th>
+										  <th [ngStyle]="{'text-align':'center'}">ID</th>
+										  <th [ngStyle]="{'text-align':'center'}">Inicio</th> 
+										  <th [ngStyle]="{'text-align':'center'}">Fin</th>
+										  <th [ngStyle]="{'text-align':'center'}">Documentos procesados</th>
+										  <th [ngStyle]="{'text-align':'center'}">Incidencias</th>
+										  <th [ngStyle]="{'text-align':'center'}">Estado</th>
+										  
+										</tr>
+							
+									    <tr *ngFor="let row of solicitudes | customerEmailFilter:id " [ngStyle]="{'text-align':'center'}">
+									        <td >
+									        	<button (click)="getbyId(row.id)" class="btn btn-info btn-round">
+						                            <i class="material-icons">present_to_all</i> ver
+						                        	<div class="ripple-container"></div>
+						                        </button>
+					                        </td>
+									        <td>{{row.id}}</td>
+									        <td>{{row.proceso}}</td>
+									        <td>{{row.fecha_inicio}}</td>
+									        <td>{{row.feha_fin}}</td>
+									        <td>{{row.cantidad_doc | number}}</td>
+									        <td>{{row.cerror}}</td>
+                                           	<td>
+                                           		<button  class="btn btn-warning btn-round">
+						                            <i class="material-icons">get_app</i> descargar
+						                        	<div class="ripple-container"></div>
+						                        </button>
+                                           	</td>
+                                           
+									     </tr>
+                                      </tbody>
+                                </table>
+						        
+						        </div>
+						    </div>
+						</div>
+						
+
+
+
+				  </div>
+				  
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,187 @@
+
+table-cell-view-mode {
+    text-align: -webkit-center;
+}
+a.ng2-smart-sort-link.sort {
+    border-bottom-width: 1px;
+   font-size: 1.8em;
+   font-weight: $font-weight-light;
+	}
+.ng2-smart-title {
+	text-align: -webkit-center;
+	
+}
+table-cell-view-mode {
+    font-size: 1.5em;
+    padding: 12px 8px;
+    vertical-align: middle;
+}
+input.completer-input {
+	font-size: 1.5em !important;
+    border: 0;
+    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-size: 0 2px, 100% 1px;
+    background-repeat: no-repeat;
+    background-position: center bottom, center calc(100% - 1px);
+    background-color: transparent;
+    transition: background 0s ease-out;
+    float: none;
+    box-shadow: none;
+    border-radius: 0;
+    font-weight: 400;
+	
+}
+input.completer-input:focus {
+  outline: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: -webkit-linear-gradient(#009688, #009688), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: -o-linear-gradient(#009688, #009688), -o-linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#D2D2D2, #D2D2D2);
+  -webkit-background-size: 100% 2px, 100% 1px;
+          background-size: 100% 2px, 100% 1px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition-duration: 0.3s;
+       -o-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+input.completer-input:after {
+  background-color: #009688;
+}
+
+table{
+   > thead > tr > th {
+       border-bottom-width: 1px;
+       font-size: $font-size-h5;
+       font-weight: $font-weight-light;
+   }
+
+   .tab-pane &{
+        tbody > tr > td:first-child{
+            width: 36px;
+        }
+   }	
+
+   .radio,
+   .checkbox{
+       margin-top: -1px;
+       margin-bottom: 0;
+       padding: 0;
+       width: 15px;
+
+       .icons{
+           position: relative;
+       }
+   }
+   > thead > tr > th,
+   > tbody > tr > th,
+   > tfoot > tr > th,
+   > thead > tr > td,
+   > tbody > tr > td,
+   > tfoot > tr > td{
+       padding: 12px 8px;
+       vertical-align: middle;
+	    padding: 8px;
+		line-height: 1.42857143;
+		vertical-align: top;
+		border-bottom: 1px solid #ddd;
+   }
+
+   .th-description{
+       max-width: 150px;
+   }
+   .td-price{
+       font-size: 26px;
+       font-weight: $font-weight-light;
+       margin-top: 5px;
+       text-align: right;
+   }
+   .td-total{
+        font-weight: $font-weight-bold;
+        font-size: $font-size-h5;
+        padding-top: 14px;
+        text-align: right;
+    }
+
+   .td-actions .btn{
+    margin: 0px;
+    padding: 5px;
+    }
+
+    > tbody > tr{
+        position: relative;
+    }
+
+    .flag{
+        img{
+            max-width: 18px;
+            margin-top: -2px;
+        }
+    }
+}
+
+
+
+
+
+.table-sales{
+    margin-top: 40px;
+}
+.table-shopping{
+    > thead > tr > th{
+        font-size: 0.9em;
+        text-transform: uppercase;
+    }
+    > tbody > tr > td{
+        font-size: $font-paragraph;
+
+        b{
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+    .td-name{
+        font-weight: $font-weight-default;
+        font-size: 1.5em;
+        small{
+            color: $gray-light;
+            font-size: 0.75em;
+            font-weight: $font-weight-light;
+        }
+    }
+    .td-number{
+       font-weight: $font-weight-light;
+       font-size: $font-size-h4;
+   }
+    .td-name{
+        min-width: 200px;
+
+        a{
+            color: $black-color;
+
+            &:hover,
+            &:focus{
+                color: $brand-primary;
+            }
+        }
+    }
+    .td-number{
+        text-align: right;
+        min-width: 145px;
+
+        small{
+            margin-right: 3px;
+        }
+    }
+
+    .img-container{
+        width: 120px;
+        max-height: 160px;
+        overflow: hidden;
+        display: block;
+
+        img{
+            width: 100%;
+        }
+    }
+}

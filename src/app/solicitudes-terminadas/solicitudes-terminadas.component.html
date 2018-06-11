@@ -1,0 +1,108 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="header text-center">
+			<h3 class="title">Solicitudes Terminadas</h3>
+			
+        </div> 
+        <div class="row">
+			<div class="col-12">
+					<div *ngIf="this.procesos.proc!==undefined else charge"></div>
+			</div>
+		
+        <div class="col-md-12" [hidden]="!procesos.show">
+                <div class="card card-chart">
+                    <div class="card-header" data-background-color="green" data-header-animation="true" >
+                        <div class="ct-chart" id="dailySalesChart"></div>
+                    </div>
+                    <div class="card-content">
+                        
+                        <h4 class="card-title">Semana</h4>
+                        <p class="category">
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> {{procesos.docQ}}  </span>Cantidad de solicitudes realizadas los ultimos 7 dias</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-12" [hidden]="!procesos.show">
+						<div class="card">
+						    <div class="card-header card-header-icon" data-background-color="blue">
+						        <i class="fa fa-archive" aria-hidden="true"></i>
+						    </div>
+						    <div class="card-content">
+						        <h4 class="card-title">Seleccione Solicitudes Activas -
+						           
+								</h4>
+								<input type="text" id="inputEmail" class="form-control" placeholder="Buscar Id" [(ngModel)]="idProceso">
+						        <div class="table-responsive">
+						        <table class="table table-striped">
+										<thead class=" text-primary" >
+												<th></th>
+												<th [ngStyle]="{'text-align':'center'}">ID</th>
+												<th [ngStyle]="{'text-align':'center'}">Proceso</th> 
+												<th [ngStyle]="{'text-align':'center'}">Termino estimado</th>
+												<th [ngStyle]="{'text-align':'center'}">Procentaje de avance</th>
+											  </thead>
+                                      <tbody>
+                                      	
+										
+							
+									    <tr *ngFor="let row of procesos.proc | customerEmailFilter:idProceso" [ngStyle]="{'text-align':'center'}" >
+									        <ng-container *ngIf="row.idEstado != null">
+									        <td >
+									        	<button (click)="getbyId(row.idProceso)"  [ngClass]="(row.completado)?'btn-info' :'btn-danger'" class="btn  btn-round">
+						                            <i class="material-icons">present_to_all</i> ver Detalle
+						                        	<div class="ripple-container"></div>
+						                        </button>
+					                        </td>
+									        <td>{{row.idProceso}}</td>
+									        <td>{{row.estado}}</td>
+									        <td>{{row.tiempoEstimado}}</td>
+									        
+									        <td *ngIf="row.completado; else error">
+									        
+									        	{{row.completado}}%
+                  								<div class="progress progress-line-info">
+							                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin='0' aria-valuemax='100' [ngStyle]="{'width':row.completado+'%'}">
+							                     <span class='sr-only'>{{row.completado}}% Completado</span>"+
+							                   </div>
+							                   <div class="progress-bar progress-bar-danger" [ngStyle]="{'width': row.porNOK+'%' }">
+					                                <span class="sr-only">10% Complete (danger)</span>
+					                            </div>
+							                  </div>
+							                
+							                </td>
+                                           	<ng-template #error>
+	                                           	<td>
+	                                           	100%
+												<div class="progress progress-line-info">
+								                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin='0' aria-valuemax='100' [ngStyle]="{'width':row.completado+'%'}">
+								                     <span class='sr-only'>100% Completado</span>"+
+								                   </div>
+								                   <div class="progress-bar progress-bar-danger" [ngStyle]="{'width': '100%' }">
+						                                <span class="sr-only">10% Complete (danger)</span>
+						                            </div>
+								                  </div>
+								                  </td>
+											</ng-template>
+                                           </ng-container>
+                                      </tbody>
+                                </table>
+						        
+						        </div>
+						    </div>
+						</div>
+
+
+
+				  </div>
+				  
+            </div>
+        </div>
+	</div>
+	<ng-template #charge>
+			<div class="loader" >
+				   <svg class="circular" viewBox="25 25 50 50">
+					   <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+				   </svg>
+			   </div>
+	   </ng-template>
