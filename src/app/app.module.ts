@@ -12,6 +12,7 @@ import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
 import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import { ParameterService } from './shared/services/parameter.service';
 import {AppRoutes} from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,7 +21,8 @@ import {AppRoutes} from './app.routing';
     HttpModule,
     SidebarModule,
     NavbarModule,
-    FooterModule
+    FooterModule,
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,

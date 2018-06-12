@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { HttpClient } from '@angular/common/http';
 import { ParameterService } from "./parameter.service";
 
 @Injectable()
@@ -10,15 +10,16 @@ export class CommonService {
   resourceProcessByTime: string = "/api-monitor-ar/process/last/";
   resourcedocuments: string = "/api-monitor-ar/document/";
   resourceProcessStatus: string = "/api-monitor-ar/process/status/";
-
-  constructor(private http: Http, private _parameter: ParameterService) {}
-
+  
+  
+  constructor(private http: HttpClient, private _parameter: ParameterService) {}
+  
   // Mantenedor usuarios
   getProcessService() {
     let url = this._parameter.getEndPoint() + this.resourceProcess;
-    return this.http.get(url).map(
-      res => {
-        return res;
+    return this.http.get(url).subscribe(
+      data => {
+        return data;
       },
       error => console.log(error)
     );
@@ -27,18 +28,18 @@ export class CommonService {
   getProcessStatusService(status:number) {
     let url = this._parameter.getEndPoint() + this.resourceProcessStatus+status;
     console.log(url);
-    return this.http.get(url).map(
-      res => {
-        return res;
+    return this.http.get(url).subscribe(
+      data => {
+        return data;
       },
       error => console.log(error)
     );
   }
   getProcessByTimeService(time) {
     let url = this._parameter.getEndPoint() + this.resourceProcessByTime + time;
-    return this.http.get(url).map(
-      res => {
-        return res;
+    return this.http.get(url).subscribe(
+      data => {
+        return data;
       },
       error => console.log(error)
     );
@@ -46,9 +47,9 @@ export class CommonService {
   getDocumentsService( process: string) {
     let url = this._parameter.getEndPoint() + this.resourcedocuments + process;
     console.log("url documentos: "+url);
-    return this.http.get(url).map(
-      res => {
-        return res;
+    return this.http.get(url).subscribe(
+      data => {
+        return data;
       },
       error => console.log(error)
     );
