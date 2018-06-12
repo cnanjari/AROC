@@ -13,12 +13,14 @@ export class CommonService {
   
   
   constructor(private http: HttpClient, private _parameter: ParameterService) {}
-  
+ 
+
   // Mantenedor usuarios
   getProcessService() {
     let url = this._parameter.getEndPoint() + this.resourceProcess;
     return this.http.get(url).subscribe(
       data => {
+        console.log(data);
         return data;
       },
       error => console.log(error)
@@ -36,6 +38,8 @@ export class CommonService {
     );
   }
   getProcessByTimeService(time) {
+    console.log(this._parameter.getEndPoint());
+
     let url = this._parameter.getEndPoint() + this.resourceProcessByTime + time;
     return this.http.get(url).subscribe(
       data => {

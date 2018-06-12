@@ -20,11 +20,13 @@ export class ParameterService {
   }
 
   getEndPoint() {
+    this.getValues();
     return sessionStorage.getItem("endpoint");
   }
 
   // Metodo de obtencion de datos desde .json
   getParameters() {
+    
     return this.http.get<Config>(this.configUrl);
   }
 
@@ -33,6 +35,8 @@ export class ParameterService {
       
        this.getParameters()
           .subscribe( data => {
+            console.log("obtiene los parametros");
+            console.log(data);
             this.setEndPoint(data.endpoint);
             }
           );

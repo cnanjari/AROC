@@ -224,6 +224,8 @@ startAnimationForLineChart(chart) {
     this.procesos.show = false;
     this.getProcess().then(
       (response) => {
+        console.log("llegó la respuesta: ");
+        console.log(response);
         this.procesarProc(response);
         this.procesarDias(response);
         console.log(this.procesos);
