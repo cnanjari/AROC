@@ -17,15 +17,20 @@ export class CommonService {
 
   // Mantenedor usuarios
   getProcessService() {
-    let url = this._parameter.getEndPoint() + this.resourceProcess;
-    return this.http.get(url).subscribe(
-      data => {
-        console.log(data);
-        return data;
-      },
-      error => console.log(error)
-    );
-  
+   
+      let url = this._parameter.getEndPoint() + this.resourceProcess;
+      this.http.get(url)
+        .toPromise()
+        .then(
+          res => { // Success
+            console.log(res);
+            return res;
+          },
+          msg => { // Error
+          console.error(msg);
+          return msg;
+          }
+        );
   }
   getProcessStatusService(status:number) {
     let url = this._parameter.getEndPoint() + this.resourceProcessStatus+status;

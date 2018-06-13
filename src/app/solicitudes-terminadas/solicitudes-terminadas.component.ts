@@ -100,9 +100,7 @@ export class SolicitudesTerminadasComponent implements OnInit {
       }
   }
   getProcess() {
-    return new Promise((resolve, reject) => {
-      this._CommonService.getProcessService();
-    })
+    return new Promise(this._CommonService.getProcessService());
   };
   procesarDias(data){
     this.procesosSemana = data;
@@ -222,16 +220,31 @@ startAnimationForLineChart(chart) {
 
     this.procesos = <any>{};
     this.procesos.show = false;
-    this.getProcess().then(
-      (response) => {
-        console.log("llegó la respuesta: ");
-        console.log(response);
-        this.procesarProc(response);
-        this.procesarDias(response);
-        console.log(this.procesos);
-      }
-    );
     
+    /* this._CommonService.getProcessService().then(
+      res => {
+        console.log("llegó la respuesta: ");
+        console.log(res.json());
+        this.procesarProc(res.json());
+        this.procesarDias(res.json());
+        console.log(this.procesos);
+      },
+      msg => {
+        console.error(msg)
+      }
+    ); */
+    this._CommonService.getProcessService()).then(
+      res => {
+        console.log("llegó la respuesta: ");
+        console.log(res.json());
+        this.procesarProc(res.json());
+        this.procesarDias(res.json());
+        console.log(this.procesos);
+      },
+      msg => {
+        console.error(msg)
+      }
+    //this.getProcess()
       
       this.getbyId= function (id){
       var logSeleccionado = this.procesos.proc.filter(x => x.idProceso === id);
