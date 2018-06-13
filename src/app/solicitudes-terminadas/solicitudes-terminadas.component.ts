@@ -100,7 +100,7 @@ export class SolicitudesTerminadasComponent implements OnInit {
       }
   }
   getProcess() {
-    return new Promise(this._CommonService.getProcessService());
+    return this._CommonService.getProcessService();
   };
   procesarDias(data){
     this.procesosSemana = data;
@@ -233,17 +233,14 @@ startAnimationForLineChart(chart) {
         console.error(msg)
       }
     ); */
-    this._CommonService.getProcessService()).then(
-      res => {
+    
+
         console.log("llegó la respuesta: ");
-        console.log(res.json());
-        this.procesarProc(res.json());
-        this.procesarDias(res.json());
-        console.log(this.procesos);
-      },
-      msg => {
-        console.error(msg)
-      }
+        console.log(this.getProcess());
+        this.procesarProc(this.getProcess());
+        this.procesarDias(this.getProcess());
+        console.log(this.getProcess());
+     
     //this.getProcess()
       
       this.getbyId= function (id){
